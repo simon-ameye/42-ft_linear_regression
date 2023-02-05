@@ -17,15 +17,6 @@ def dMeanQuadErr(X, Y, a, b):
     return [dMeanQuadErr_a, dMeanQuadErr_b]
 
 
-def meanQuadErr(X, Y, a, b):
-    length = len(X)
-    meanQuadErr = 0
-
-    MeanQuadErr = np.power((Y - (a * X + b)), 2)
-    meanQuadErr = MeanQuadErr.sum() / float(length) / 2
-    return meanQuadErr
-
-
 def gradient_descent(X, Y, alpha, max_iterations):
     a = 0
     b = 0
@@ -34,8 +25,6 @@ def gradient_descent(X, Y, alpha, max_iterations):
         [dMeanQuadErr_a, dMeanQuadErr_b] = dMeanQuadErr(X, Y, a, b)
         a = a - alpha * dMeanQuadErr_a
         b = b - alpha * dMeanQuadErr_b
-        print("a = {0}, b = {1}, meanQuadErr = {2}".format(
-            a, b, meanQuadErr(X, Y, a, b)))
 
     return [a, b]
 
